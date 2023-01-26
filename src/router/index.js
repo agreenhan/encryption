@@ -6,30 +6,6 @@ Vue.use(Router)
 /* Layout */
 import Layout from '@/layout'
 
-/**
- * Note: sub-menu only appear when route children.length >= 1
- * Detail see: https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
- *
- * hidden: true                   if set true, item will not show in the sidebar(default is false)
- * alwaysShow: true               if set true, will always show the root menu
- *                                if not set alwaysShow, when item has more than one children route,
- *                                it will becomes nested mode, otherwise not show the root menu
- * redirect: noRedirect           if set noRedirect will no redirect in the breadcrumb
- * name:'router-name'             the name is used by <keep-alive> (must set!!!)
- * meta : {
-    roles: ['admin','editor']    control the page roles (you can set multiple roles)
-    title: 'title'               the name show in sidebar and breadcrumb (recommend set)
-    icon: 'svg-name'/'el-icon-x' the icon show in the sidebar
-    breadcrumb: false            if set false, the item will hidden in breadcrumb(default is true)
-    activeMenu: '/example/list'  if set path, the sidebar will highlight the path you set
-  }
- */
-
-/**
- * constantRoutes
- * a base page that does not have permission requirements
- * all roles can be accessed
- */
 export const constantRoutes = [
   {
     path: '/login',
@@ -51,7 +27,7 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '主页', icon: 'dashboard' }
     }]
   },
 
@@ -59,20 +35,48 @@ export const constantRoutes = [
     path: '/example',
     component: Layout,
     redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
+    name: 'Symmetric',
+    meta: { title: '对称算法加密', icon: 'el-icon-s-help' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
+        path: 'aes',
+        name: 'AES',
         component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        meta: { title: 'AES' },
+        children: [
+          {
+            path: 'menu1-2-1',
+            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
+            name: 'Menu1-2-1',
+            meta: { title: '加密' }
+          },
+          {
+            path: 'menu1-2-2',
+            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
+            name: 'Menu1-2-2',
+            meta: { title: '解密' }
+          }
+        ]
       },
       {
-        path: 'tree',
-        name: 'Tree',
+        path: 'rc4',
+        name: 'RC4',
         component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        meta: { title: 'RC4' },
+        children: [
+          {
+            path: 'menu1-2-1',
+            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
+            name: 'Menu1-2-1',
+            meta: { title: '加密' }
+          },
+          {
+            path: 'menu1-2-2',
+            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
+            name: 'Menu1-2-2',
+            meta: { title: '解密' }
+          }
+        ]
       }
     ]
   },
@@ -80,12 +84,49 @@ export const constantRoutes = [
   {
     path: '/form',
     component: Layout,
+    redirect: '/example/table',
+    name: 'Asymmetric',
+    meta: { title: '非对称算法加密', icon: 'el-icon-s-help' },
     children: [
       {
-        path: 'index',
-        name: 'Form',
+        path: 'rsa',
+        name: 'RSA',
         component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        meta: { title: 'RSA' },
+        children: [
+          {
+            path: 'menu1-2-1',
+            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
+            name: 'Menu1-2-1',
+            meta: { title: '加密' }
+          },
+          {
+            path: 'menu1-2-2',
+            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
+            name: 'Menu1-2-2',
+            meta: { title: '解密' }
+          }
+        ]
+      },
+      {
+        path: 'dsa',
+        name: 'DSA',
+        component: () => import('@/views/tree/index'),
+        meta: { title: 'DSA' },
+        children: [
+          {
+            path: 'menu1-2-1',
+            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
+            name: 'Menu1-2-1',
+            meta: { title: '加密' }
+          },
+          {
+            path: 'menu1-2-2',
+            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
+            name: 'Menu1-2-2',
+            meta: { title: '解密' }
+          }
+        ]
       }
     ]
   },
@@ -94,68 +135,51 @@ export const constantRoutes = [
     path: '/nested',
     component: Layout,
     redirect: '/nested/menu1',
-    name: 'Nested',
+    name: 'Digest',
     meta: {
-      title: 'Nested',
+      title: '摘要算法加密',
       icon: 'nested'
     },
     children: [
       {
-        path: 'menu1',
+        path: 'md5',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
+        name: 'MD5',
+        meta: { title: 'MD5算法' },
         children: [
           {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
+            path: 'menu1-2-1',
+            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
+            name: 'Menu1-2-1',
+            meta: { title: '加密' }
           },
           {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
+            path: 'menu1-2-2',
+            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
+            name: 'Menu1-2-2',
+            meta: { title: '解密' }
           }
         ]
       },
       {
-        path: 'menu2',
+        path: 'SHA-1',
         component: () => import('@/views/nested/menu2/index'),
-        name: 'Menu2',
-        meta: { title: 'menu2' }
-      }
-    ]
-  },
-
-  {
-    path: 'external-link',
-    component: Layout,
-    children: [
-      {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        name: 'SHA-1',
+        meta: { title: 'SHA-1算法' },
+        children: [
+          {
+            path: 'menu1-2-2',
+            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
+            name: 'Menu1-2-2',
+            meta: { title: '加密' }
+          },
+          {
+            path: 'menu1-2-2',
+            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
+            name: 'Menu1-2-2',
+            meta: { title: '解密' }
+          }
+        ]
       }
     ]
   },

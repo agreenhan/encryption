@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: 'Vue Admin Template',
+  title: '文本数据加解密平台',
 
   /**
    * @type {boolean} true | false
