@@ -21,6 +21,7 @@ export default {
 .app-main {
   /*50 = navbar  */
   min-height: calc(100vh - 50px);
+  background-color: #f6f6f6;
   width: 100%;
   position: relative;
   overflow: hidden;

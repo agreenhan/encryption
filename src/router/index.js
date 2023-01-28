@@ -32,57 +32,23 @@ export const constantRoutes = [
   },
 
   {
-    path: '/example',
+    path: '/symmetric',
     component: Layout,
-    redirect: '/example/table',
+    redirect: '/symmetric/table',
     name: 'Symmetric',
     meta: { title: '对称算法加密', icon: 'el-icon-s-help' },
     children: [
       {
         path: 'aes',
         name: 'AES',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'AES' },
-        children: [
-          {
-            path: 'menu1-2-1',
-            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-            name: 'Menu1-2-1',
-            meta: { title: '加密' }
-          },
-          {
-            path: 'menu1-2-2',
-            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-            name: 'Menu1-2-2',
-            meta: { title: '解密' }
-          }
-        ]
-      },
-      {
-        path: 'rc4',
-        name: 'RC4',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'RC4' },
-        children: [
-          {
-            path: 'menu1-2-1',
-            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-            name: 'Menu1-2-1',
-            meta: { title: '加密' }
-          },
-          {
-            path: 'menu1-2-2',
-            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-            name: 'Menu1-2-2',
-            meta: { title: '解密' }
-          }
-        ]
+        component: () => import('@/views/symmetric/aes'),
+        meta: { title: 'AES' }
       }
     ]
   },
 
   {
-    path: '/form',
+    path: '/asymmetric',
     component: Layout,
     redirect: '/example/table',
     name: 'Asymmetric',
@@ -91,95 +57,27 @@ export const constantRoutes = [
       {
         path: 'rsa',
         name: 'RSA',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'RSA' },
-        children: [
-          {
-            path: 'menu1-2-1',
-            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-            name: 'Menu1-2-1',
-            meta: { title: '加密' }
-          },
-          {
-            path: 'menu1-2-2',
-            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-            name: 'Menu1-2-2',
-            meta: { title: '解密' }
-          }
-        ]
-      },
-      {
-        path: 'dsa',
-        name: 'DSA',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'DSA' },
-        children: [
-          {
-            path: 'menu1-2-1',
-            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-            name: 'Menu1-2-1',
-            meta: { title: '加密' }
-          },
-          {
-            path: 'menu1-2-2',
-            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-            name: 'Menu1-2-2',
-            meta: { title: '解密' }
-          }
-        ]
+        component: () => import('@/views/asymmetric/rsa'),
+        meta: { title: 'RSA' }
       }
     ]
   },
 
   {
-    path: '/nested',
+    path: '/digest',
     component: Layout,
     redirect: '/nested/menu1',
     name: 'Digest',
     meta: {
       title: '摘要算法加密',
-      icon: 'nested'
+      icon: 'el-icon-s-help'
     },
     children: [
       {
         path: 'md5',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
+        component: () => import('@/views/digest/md5'),
         name: 'MD5',
-        meta: { title: 'MD5算法' },
-        children: [
-          {
-            path: 'menu1-2-1',
-            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-            name: 'Menu1-2-1',
-            meta: { title: '加密' }
-          },
-          {
-            path: 'menu1-2-2',
-            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-            name: 'Menu1-2-2',
-            meta: { title: '解密' }
-          }
-        ]
-      },
-      {
-        path: 'SHA-1',
-        component: () => import('@/views/nested/menu2/index'),
-        name: 'SHA-1',
-        meta: { title: 'SHA-1算法' },
-        children: [
-          {
-            path: 'menu1-2-2',
-            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-            name: 'Menu1-2-2',
-            meta: { title: '加密' }
-          },
-          {
-            path: 'menu1-2-2',
-            component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-            name: 'Menu1-2-2',
-            meta: { title: '解密' }
-          }
-        ]
+        meta: { title: 'MD5算法' }
       }
     ]
   },

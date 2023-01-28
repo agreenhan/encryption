@@ -1,19 +1,14 @@
 <template>
   <div class="dashboard-container">
-    主页内容
+    本平台用于文本数据的编解码<br>
+    作者: AgreenHand<br>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 
 export default {
-  name: 'Dashboard',
-  computed: {
-    ...mapGetters([
-      'name'
-    ])
-  }
+  name: 'Dashboard'
 }
 </script>
 
