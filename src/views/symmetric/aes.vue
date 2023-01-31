@@ -7,7 +7,7 @@
       <el-input
         v-model="form.source"
         type="textarea"
-        placeholder="请输入需要加密/解密的文本数据，字数限制1000字以内，如需长文本加密/解密，请选择下方上传文件形式。"
+        placeholder="请输入需要加密的文本数据，字数限制1000字以内。"
         :autosize="rows"
         :maxlength="maxlength"
       />
